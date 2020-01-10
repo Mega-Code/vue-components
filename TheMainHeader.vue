@@ -3,6 +3,10 @@
     <div class="main-header">
       <div class="container">
         <div class="main-header-content">
+          <div class="side-menu">
+            <i class="fas fa-bars"></i>
+            MENU
+          </div>
           <div class="logo">
             <router-link tag="a" to="/">
               <img :src="require('@/assets/svg/logo.svg')" alt="" />
@@ -45,7 +49,32 @@
               </a>
             </div>
           </div>
+          <a href="#" class="products-cart">
+            <i class="fab fa-opencart"></i>
+            <span class="cart-count">
+              {{ cartCount }}
+            </span>
+          </a>
         </div>
+      </div>
+    </div>
+    <!-- Fixed bottom nav -->
+    <div class="fixed-bottom-nav">
+      <div class="item">
+        <i class="fas fa-shopping-bag"></i>
+        <span>Shop</span>
+      </div>
+      <div class="item">
+        <i class="far fa-heart"></i>
+        <span>WishList</span>
+      </div>
+      <div class="item">
+        <i class="far fa-user"></i>
+        <span>My Account</span>
+      </div>
+      <div class="item">
+        <i class="fas fa-random"></i>
+        <span>Compare</span>
       </div>
     </div>
   </div>
@@ -72,6 +101,11 @@ export default {
     justify-content: space-between;
     align-items: center;
     font-family: "Poppins", sans-serif;
+
+    .side-menu,
+    .products-cart {
+      display: none;
+    }
 
     // Logo
     .logo {
@@ -160,6 +194,79 @@ export default {
         }
       }
     }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .search-products {
+    input {
+      width: auto !important;
+    }
+  }
+  .products-cart {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .side-menu {
+    display: block !important;
+  }
+  .search-products,
+  .user-action {
+    display: none !important;
+  }
+  .products-cart {
+    display: block !important;
+    position: relative;
+
+    .cart-count {
+      position: absolute;
+      background: #83b735;
+      color: #fff;
+      font-weight: 100;
+      height: 15px;
+      width: 15px;
+      text-align: center;
+      font-size: 11px;
+      border-radius: 50%;
+      top: -5px;
+    }
+  }
+}
+
+// Fixed bottom nav
+.fixed-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 9px 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 1px 1px 3px #333;
+  font-family: "Poppins", sans-serif;
+  display: none;
+
+  .item {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    font-size: 13px;
+    text-transform: uppercase;
+    color: #404040;
+
+    span {
+      margin-top: 4px;
+      font-size: 11px;
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .fixed-bottom-nav {
+    display: flex !important;
   }
 }
 </style>
